@@ -1,5 +1,4 @@
 defmodule CQEx.Client do
-  import CQEx.Helpers
   import CQEx, only: :macros
 
   defdelegate new,             to: :cqerl, as: :get_client
@@ -11,10 +10,6 @@ defmodule CQEx.Client do
     |> CQEx.Client.get()
     |> :cqerl.close_client()
   end
-
-  defbang new
-  defbang new(a)
-  defbang new(a, b)
 
   def get(client={p, r}) when is_pid(p) and is_reference(r) do
     client
